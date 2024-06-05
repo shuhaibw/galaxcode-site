@@ -10,12 +10,12 @@ export default function Learn(){
       </div>
       <nav className="flex flex-wrap md:pl-20 sm:pl-16 ">
          {/* add hrefs */}
-         <a className ="hover:bg-gray-200 px-2 py-1 rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="#">Home</a>
-         <a className ="bg-gray-100  px-2 py-1 rounded-sm text-sm  font-spacemono mr-6 text-gray-700" href="#">Learn</a>
-         <a className ="hover:bg-gray-200 px-2 py-1  rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="#">Code</a>
-         <a className ="hover:bg-gray-200 px-2 py-1 rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="#">Playground</a>
-         <a className ="hover:bg-gray-200 px-2 py-1  rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="#">Community</a>
-         <a className="hover:bg-gray-200 px-2 py-1  rounded-sm text-sm  font-spacemono mr-2 hover:text-gray-700 " href="#">About Our AI Copilot</a>
+         <a className ="hover:bg-gray-200 px-2 py-1 rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="/">Home</a>
+         <a className ="bg-gray-100  px-2 py-1 rounded-sm text-sm  font-spacemono mr-6 text-gray-700" href="learn">Learn</a>
+         <a className ="hover:bg-gray-200 px-2 py-1  rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="code">Code</a>
+         <a className ="hover:bg-gray-200 px-2 py-1 rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="playground">Playground</a>
+         <a className ="hover:bg-gray-200 px-2 py-1  rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="community">Community</a>
+         <a className="hover:bg-gray-200 px-2 py-1  rounded-sm text-sm  font-spacemono mr-2 hover:text-gray-700 " href="about">About Our AI Copilot</a>
       </nav>
     </header>
    
@@ -36,7 +36,7 @@ export default function Learn(){
               <a
                   className="inline-flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors
                    hover:bg-gray-100 hover:text-gray-900 hover:bg-gray-200 active:bg-white  disabled:pointer-events-none disabled:opacity-50  "
-                  href="#"
+                  href="concepts/variable"
                 >
                   Begin
                 </a>
@@ -56,7 +56,7 @@ export default function Learn(){
               <a
                   className="inline-flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors
                    hover:bg-gray-100 hover:text-gray-900 hover:bg-gray-200 active:bg-white  disabled:pointer-events-none disabled:opacity-50  "
-                  href="#"
+                  href="concepts/types"
                 >
                   Begin
                 </a>
@@ -73,7 +73,7 @@ export default function Learn(){
               <a
                   className="inline-flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors
                    hover:bg-gray-100 hover:text-gray-900 hover:bg-gray-200 active:bg-white  disabled:pointer-events-none disabled:opacity-50  "
-                  href="#"
+                  href="concepts/math"
                 >
                   Begin
                 </a>
@@ -91,7 +91,7 @@ export default function Learn(){
               <a
                   className="inline-flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors
                    hover:bg-gray-100 hover:text-gray-900 hover:bg-gray-200 active:bg-white  disabled:pointer-events-none disabled:opacity-50  "
-                  href="#"
+                  href="concepts/lists"
                 >
                   Begin
                 </a>
@@ -111,7 +111,7 @@ export default function Learn(){
               <a
                   className="inline-flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors
                    hover:bg-gray-100 hover:text-gray-900 hover:bg-gray-200 active:bg-white  disabled:pointer-events-none disabled:opacity-50  "
-                  href="#"
+                  href="concepts/loops"
                 >
                   Begin
                 </a>
@@ -130,7 +130,7 @@ export default function Learn(){
               <a
                   className="inline-flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors
                    hover:bg-gray-100 hover:text-gray-900 hover:bg-gray-200 active:bg-white  disabled:pointer-events-none disabled:opacity-50  "
-                  href="#"
+                  href="concepts/conditionals"
                 >
                   Begin
                 </a>
@@ -148,7 +148,7 @@ export default function Learn(){
               <a
                   className="inline-flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors
                    hover:bg-gray-100 hover:text-gray-900 hover:bg-gray-200 active:bg-white  disabled:pointer-events-none disabled:opacity-50  "
-                  href="#"
+                  href="concepts/functions"
                 >
                   Begin
                 </a>
@@ -164,7 +164,7 @@ export default function Learn(){
               <a
                   className="inline-flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors
                    hover:bg-gray-100 hover:text-gray-900 hover:bg-gray-200 active:bg-white  disabled:pointer-events-none disabled:opacity-50  "
-                  href="#"
+                  href="concepts/drawing"
                 >
                   Begin
                 </a>

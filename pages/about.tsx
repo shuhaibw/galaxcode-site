@@ -2,7 +2,7 @@
 export default function About(){
 return(
    <>
-     <header className="flex items-center justify-between
+ <header className="flex items-center justify-between
     bg-purple-900 text-white px-6 py-3 shadow-4xl ">
       <div className="flex items-center">
       <img src="../rocket.jpg" className="w-7 h-7 mr-2"></img>
@@ -10,14 +10,15 @@ return(
       </div>
       <nav className="flex flex-wrap md:pl-20 sm:pl-16 ">
          {/* add hrefs */}
-         <a className ="hover:bg-gray-200 px-2 py-1 rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="#">Home</a>
-         <a className ="hover:bg-gray-200 px-2 py-1 rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="#">Learn</a>
-         <a className ="hover:bg-gray-200 px-2 py-1  rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="#">Code</a>
-         <a className ="hover:bg-gray-200 px-2 py-1 rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="#">Playground</a>
-         <a className ="hover:bg-gray-200 px-2 py-1  rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="#">Community</a>
-         <a className="bg-gray-200 px-2 py-1  rounded-sm text-sm  font-spacemono mr-2 text-gray-700 " href="#">About Our AI Copilot</a>
+         <a className ="hover:bg-gray-200 px-2 py-1 rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="/">Home</a>
+         <a className ="hover:bg-gray-100  px-2 py-1 rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="learn">Learn</a>
+         <a className ="hover:bg-gray-200 px-2 py-1  rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="code">Code</a>
+         <a className ="hover:bg-gray-200 px-2 py-1 rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="playground">Playground</a>
+         <a className ="hover:bg-gray-200 px-2 py-1  rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="community">Community</a>
+         <a className="bg-gray-200 px-2 py-1  rounded-sm text-sm  font-spacemono mr-2 text-gray-700 " href="about">About Our AI Copilot</a>
       </nav>
     </header>
+   
    <main>
      <section className="bg-gray-100   py-10 px-6 md:px-12 lg:px-20">
        <div className="max-w-6xl mx-auto">
@@ -66,9 +67,9 @@ return(
              <div className="mt-4 flex justify-between items-center">
                <a
                  className="inline-flex items-center justify-center rounded-md border border-[#e2e8f0] bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-gray-200 active:bg-white  disabled:pointer-events-none disabled:opacity-50"
-                 href="#"
+                 href="code"
                >
-                 Start Coding ->
+                 Start Coding 
                  
                </a>
              </div>

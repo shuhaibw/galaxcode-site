@@ -8,18 +8,18 @@ export default function Home() {
 
    <header className="flex items-center justify-between
     bg-purple-900 text-white px-6 py-3 shadow-4xl ">
-      <div className="flex items-center ">
+      <div className="flex items-center">
       <img src="../rocket.jpg" className="w-7 h-7 mr-2"></img>
       <h1 className="text-xl font-bold font-orbitron">GalaxCode</h1>
       </div>
       <nav className="flex flex-wrap md:pl-20 sm:pl-16 ">
          {/* add hrefs */}
-         <a className =" bg-gray-200 px-2 py-1 rounded-sm text-sm  font-spacemono mr-6 text-gray-700" href="#">Home</a>
-         <a className ="hover:bg-gray-200 px-2 py-1 rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="#">Learn</a>
-         <a className ="hover:bg-gray-200 px-2 py-1  rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="#">Code</a>
-         <a className ="hover:bg-gray-200 px-2 py-1 rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="#">Playground</a>
-         <a className ="hover:bg-gray-200 px-2 py-1  rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="#">Community</a>
-         <a className="hover:bg-gray-200 px-2 py-1  rounded-sm text-sm  font-spacemono mr-2 hover:text-gray-700  " href="#">About Our AI Copilot</a>
+         <a className ="bg-gray-200 px-2 py-1 rounded-sm text-sm  font-spacemono mr-6 text-gray-700" href="/">Home</a>
+         <a className ="hover:bg-gray-100  px-2 py-1 rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="learn">Learn</a>
+         <a className ="hover:bg-gray-200 px-2 py-1  rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="code">Code</a>
+         <a className ="hover:bg-gray-200 px-2 py-1 rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="playground">Playground</a>
+         <a className ="hover:bg-gray-200 px-2 py-1  rounded-sm text-sm  font-spacemono mr-6 hover:text-gray-700" href="community">Community</a>
+         <a className="hover:bg-gray-200 px-2 py-1  rounded-sm text-sm  font-spacemono mr-2 hover:text-gray-700 " href="about">About Our AI Copilot</a>
       </nav>
     </header>
    
@@ -29,8 +29,8 @@ export default function Home() {
         <h1 className="text-4xl font-bold font-orbitron">Welcome to GalaxCode</h1>
         <p className="font-spacemono text-lg">Create Planetary Patterns with Every Line of Code! Learn to code with Python Turtle Graphics and explore the beauty of the cosmos.</p>
         <div className="flex justify-center gap-4 text-white">
-            <a className="cursor-pointer px-6 py-3 rounded-md bg-violet-700 text-sm transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg active:bg-violet-600" href="#learn">Learn</a>
-            <a className="cursor-pointer px-6 py-3 rounded-md bg-gray-700  text-sm transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg active:bg-gray-600" href="#start-coding">Start Coding</a>
+            <a className="cursor-pointer px-6 py-3 rounded-md bg-violet-700 text-sm transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg active:bg-violet-600" href="learn">Learn</a>
+            <a className="cursor-pointer px-6 py-3 rounded-md bg-gray-700  text-sm transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg active:bg-gray-600" href="code">Start Coding</a>
         </div>
     </div>
     <div className="absolute inset-0 "></div>
