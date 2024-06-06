@@ -1,10 +1,14 @@
-export default function Code(){
+import Image from 'next/image'
+
+export default function Code(){ 
+
    return(
       <>
     <header className="flex items-center justify-between
     bg-purple-900 text-white px-6 py-3 shadow-4xl ">
       <div className="flex items-center">
-      <img src="../rocket.jpg" className="w-7 h-7 mr-2"></img>
+      <Image src= "/rocket.jpg" width="34"   // Ensure you specify the correct width
+        height="34" className=" mr-2" alt="rocket"/>
       <h1 className="text-xl font-bold font-orbitron">GalaxCode</h1>
       </div>
       <nav className="flex flex-wrap md:pl-20 sm:pl-16 ">
@@ -35,7 +39,7 @@ export default function Code(){
               <a
                   className="inline-flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors
                    hover:bg-gray-100 hover:text-gray-900 hover:bg-gray-200 active:bg-white  disabled:pointer-events-none disabled:opacity-50  "
-                  href="#"
+                  href="challenges/cvariable"
                 >
                  Start Challenge
                 </a>
@@ -55,7 +59,7 @@ export default function Code(){
               <a
                   className="inline-flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors
                    hover:bg-gray-100 hover:text-gray-900 hover:bg-gray-200 active:bg-white  disabled:pointer-events-none disabled:opacity-50  "
-                  href="#"
+                  href="challenges/ctypes"
                 >
                   Start Challenge
                 </a>
@@ -72,7 +76,7 @@ export default function Code(){
               <a
                   className="inline-flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors
                    hover:bg-gray-100 hover:text-gray-900 hover:bg-gray-200 active:bg-white  disabled:pointer-events-none disabled:opacity-50  "
-                  href="#"
+                  href="challenges/cmath"
                 >
                  Start Challenge
                 </a>
@@ -90,7 +94,7 @@ export default function Code(){
               <a
                   className="inline-flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors
                    hover:bg-gray-100 hover:text-gray-900 hover:bg-gray-200 active:bg-white  disabled:pointer-events-none disabled:opacity-50  "
-                  href="#"
+                  href="challenges/clists"
                 >
                   Start Challenge
                 </a>
@@ -110,7 +114,7 @@ export default function Code(){
               <a
                   className="inline-flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors
                    hover:bg-gray-100 hover:text-gray-900 hover:bg-gray-200 active:bg-white  disabled:pointer-events-none disabled:opacity-50  "
-                  href="#"
+                  href="challenges/cloops"
                 >
                  Start Challenge
                 </a>
@@ -129,7 +133,7 @@ export default function Code(){
               <a
                   className="inline-flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors
                    hover:bg-gray-100 hover:text-gray-900 hover:bg-gray-200 active:bg-white  disabled:pointer-events-none disabled:opacity-50  "
-                  href="#"
+                  href="challenges/cconditionals"
                 >
                   Start Challenge
                 </a>
@@ -147,7 +151,7 @@ export default function Code(){
               <a
                   className="inline-flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors
                    hover:bg-gray-100 hover:text-gray-900 hover:bg-gray-200 active:bg-white  disabled:pointer-events-none disabled:opacity-50  "
-                  href="#"
+                  href="challenges/cfunctions"
                 >
                   Start Challenge
                 </a>
@@ -163,7 +167,7 @@ export default function Code(){
               <a
                   className="inline-flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors
                    hover:bg-gray-100 hover:text-gray-900 hover:bg-gray-200 active:bg-white  disabled:pointer-events-none disabled:opacity-50  "
-                  href="#"
+                  href="challenges/cdrawing"
                 >
                   Start Challenge
                 </a>
