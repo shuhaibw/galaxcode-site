@@ -6,7 +6,15 @@ logs
 # Build output
 .next/
 
+.env.local
+.env.production
+
+.venv
+venv
 # Dependency directories
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.vscode
+
