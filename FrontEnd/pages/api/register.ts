@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import User from '@/models/user';
+import User from '@/models/User';
 import connect from '@/utils/db';
 import bcrypt from 'bcryptjs';
 

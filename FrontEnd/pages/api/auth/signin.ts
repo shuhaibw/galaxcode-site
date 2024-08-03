@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import bcrypt from 'bcryptjs'
-import User from '@/models/user'
+import User from '@/models/User'
 import connect from '@/utils/db'
 import jwt from 'jsonwebtoken'
 import cookie from 'cookie'
