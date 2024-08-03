@@ -10,5 +10,5 @@ export const AZURE_TRANSLATOR_LOCATION_URI = process.env.AZURE_TRANSLATOR_LOCATI
 
 export const MONGO_CONNECTION_STRING_URI = process.env.MONGO_CONNECTION_STRING
 
-export const JWT_SECRET = process.env.JWT_SECRET
+
 

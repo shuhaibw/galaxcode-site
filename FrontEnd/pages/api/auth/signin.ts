@@ -4,10 +4,11 @@ import User from '@/models/user'
 import connect from '@/utils/db'
 import jwt from 'jsonwebtoken'
 import cookie from 'cookie'
-import { JWT_SECRET } from "../BACKEND_URI"
 
+const jwtSecret = process.env.JWT_SECRET
 
 export default async function handler (req: NextApiRequest, res: NextApiResponse) {
+   
    if (req.method === 'POST') {
 
    const {username, password} = req.body
@@ -27,7 +28,7 @@ export default async function handler (req: NextApiRequest, res: NextApiResponse
          return res.status(401).json({message: 'Invalid password'})
       }
 
-      const token = jwt.sign({ username }, JWT_SECRET, { expiresIn: '1w' })
+      const token = jwt.sign({ username }, jwtSecret as string, { expiresIn: '1w' })
 
       res.setHeader('Set-Cookie', cookie.serialize('token', token, {
          httpOnly: true,

@@ -1,18 +1,48 @@
 import { NextApiRequest, NextApiResponse } from 'next'
+import bcrypt from 'bcryptjs'
+import User from '@/models/user'
+import connect from '@/utils/db'
 import jwt from 'jsonwebtoken'
-import { JWT_SECRET } from "./BACKEND_URI"
+import cookie from 'cookie'
 
+const jwtSecret = process.env.JWT_SECRET
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-   if (req.method === 'GET') {
-      const token = req.cookies.token || ''
+export default async function handler (req: NextApiRequest, res: NextApiResponse) {
+   
+   if (req.method === 'POST') {
 
-      try {
-         const decoded = jwt.verify(token, JWT_SECRET)
-         res.status(200).json({ loggedIn: !!decoded })
+   const {username, password} = req.body
+
+   await connect()
+
+   try {
+      const user = await User.findOne({username})
+
+      if (!user) {
+         return res.status(401).json({message: 'User not found'})
       }
-      catch {
-         res.status(200).json({ loggedIn: false })
+
+      const isMatch = await bcrypt.compare(password, user.password)
+
+      if (!isMatch) {
+         return res.status(401).json({message: 'Invalid password'})
       }
+
+      const token = jwt.sign({ username }, jwtSecret as string , { expiresIn: '1w' })
+
+      res.setHeader('Set-Cookie', cookie.serialize('token', token, {
+         httpOnly: true,
+         maxAge: 60 * 60 * 24 * 7, 
+         sameSite: 'strict',
+         path: '/',
+       }))
+
+      return res.status(200).json({message: "Login successful"})
    }
+
+   catch(err){
+      console.log ("Error logging in ", err)
+      return res.status(500).json({message: "An internal server error"})
+   }
+ }
 }
