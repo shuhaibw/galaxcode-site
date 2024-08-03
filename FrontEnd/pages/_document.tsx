@@ -7,6 +7,7 @@ export default function Document() {
          <meta charSet="UTF-8" />
          <title>Galaxcode</title>
          <link rel="icon" href="astronaut.png" type="image/x-icon" />
+         <meta name="google-site-verification" content="LGsc03sAbCKJE16EwcNL7DoJQkKZwvLT30O1HYwonCs" />
       </Head>
       <body>
         <Main />
