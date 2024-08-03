@@ -1,6 +1,12 @@
 import Link from 'next/link'
 
-export default function Begin({href}) {
+interface BeginProps {
+   href: string;
+ }
+
+export default function Begin({href}: BeginProps) {
+
+  
    return(
    <div className="flex justify-between items-center  p-4">
        <Link

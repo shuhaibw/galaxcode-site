@@ -1,7 +1,11 @@
 import Link from 'next/link'
 
+interface StartProps {
+   href: string;
+ }
+
 //button that sends to code page but enter a diff href for each duplicate on code.tsx
-export default function Start({ href }) {
+export default function Start({ href }: StartProps) {
    return (
       <div className="flex justify-between items-center  p-4">
 
