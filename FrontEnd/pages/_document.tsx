@@ -5,6 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
          <meta charSet="UTF-8" />
+         <title>Galaxcode</title>
          <link rel="icon" href="astronaut.png" type="image/x-icon" />
       </Head>
       <body>
