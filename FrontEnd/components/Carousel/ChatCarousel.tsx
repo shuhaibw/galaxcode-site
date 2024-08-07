@@ -6,6 +6,7 @@ import Typing1 from '@/components/Typing/chattyping1'
 import Typing2 from '@/components/Typing/chattyping2'
 import Typing3 from '@/components/Typing/chattyping3'
 import Typing4 from '@/components/Typing/chattyping4'
+
 const ChatCarousel = () => {
 
    const [showTyping1, setShowTyping1] = useState(false)
