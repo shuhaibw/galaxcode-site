@@ -4,13 +4,13 @@
 ## Table of Contents
 + [Overview](#overview)
 + [Technical Architecture](#technical)
-    &#9702;
+   
 + [Directory Structure](#directory) <br>
     &nbsp;&#9702 [chatbot-back](#chatbot) <br>
     &nbsp;&#9702;[Turtle Backend](#turtle) <br>
-        &nbsp;&nbsp;[/app.py](#app-py) <br>
-        &nbsp;&nbsp;[/Dockerfile](#dockerfile-1) <br>
-        &nbsp;&nbsp;[/requirements.txt](#requirements-1) <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[/app.py](#app-py) <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[/Dockerfile](#dockerfile-1) <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;[/requirements.txt](#requirements-1) <br>
     &nbsp;&#9702;[Frontend](#frontend)  <br>
   
     
