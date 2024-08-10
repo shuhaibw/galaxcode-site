@@ -5,13 +5,13 @@
 + [Overview](#overview)
 + [Technical Architecture](#technical)
     &#9702;
-+ [Directory Structure](#directory)
-    &nbsp;&#9702 [chatbot-back](#chatbot)
-    &nbsp;&#9702;[Turtle Backend](#turtle)
-        &nbsp;&nbsp;[/app.py](#app-py)
-        &nbsp;&nbsp;[/Dockerfile](#dockerfile-1)
-        &nbsp;&nbsp;[/requirements.txt](#requirements-1)
-    &nbsp;&#9702;[Frontend](#frontend)
++ [Directory Structure](#directory) <br>
+    &nbsp;&#9702 [chatbot-back](#chatbot) <br>
+    &nbsp;&#9702;[Turtle Backend](#turtle) <br>
+        &nbsp;&nbsp;[/app.py](#app-py) <br>
+        &nbsp;&nbsp;[/Dockerfile](#dockerfile-1) <br>
+        &nbsp;&nbsp;[/requirements.txt](#requirements-1) <br>
+    &nbsp;&#9702;[Frontend](#frontend)  <br>
   
     
 + [Running the Application](#running)
