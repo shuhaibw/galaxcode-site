@@ -1,10 +1,7 @@
 
 # Galaxcode 
----
 
 ## Table of Contents
----
-
 + [Overview](#overview)
 + [Technical Architecture](#technical)
     &#9702;
