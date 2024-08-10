@@ -1,5 +1,6 @@
 
 # Galaxcode 
+
 ## Table of Contents
 + [Overview](#overview)
 + [Technical Architecture](#technical)
@@ -21,4 +22,4 @@
 
 
 
-### Chatbot Backend 
+### chatbot-back (Chatbot Backend) 
