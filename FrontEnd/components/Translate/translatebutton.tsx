@@ -19,7 +19,7 @@ const TranslateComponent = () => {
 
       if (inputText && selectedLanguage) {
          setLoading(true);
-         fetch('/api/translate', {
+         fetch('/api/translate', { 
             method: 'POST',
             headers: {
                'Content-Type': 'application/json',

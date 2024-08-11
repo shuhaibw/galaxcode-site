@@ -6,7 +6,6 @@ import readNDJSONStream from "ndjson-readablestream";
 import styles from "./Chat.module.css";
 
 import {
-    
     RetrievalMode,
     ChatAppResponse,
     ChatAppResponseOrError,
@@ -15,87 +14,88 @@ import {
     VectorFieldOptions,
     GPT4VInput
 } from "@/pages/api/models";
-import {chatApi} from "@/pages/api/api"
+import {chatApi} from "@/pages/api/api"     // API utility to interact with the backend
 import { Answer, AnswerError, AnswerLoading } from "../../components/Answer";
 import { QuestionInput } from "../../components/QuestionInput";
 import { ExampleList } from "../../components/Example";
 import { UserChatMessage } from "../../components/UserChatMessage";
 import { ClearChatButton } from "../../components/ClearChatButton";
 import { VectorSettings } from "../../components/VectorSettings";
-//import { useMsal } from "@azure/msal-react";
 
 const Chat = () => {
-    const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);
-    const [promptTemplate, setPromptTemplate] = useState<string>("");
-    const [retrieveCount, setRetrieveCount] = useState<number>(3);
-    const [retrievalMode, setRetrievalMode] = useState<RetrievalMode>(RetrievalMode.Hybrid);
-    const [useSemanticRanker, setUseSemanticRanker] = useState<boolean>(true);
-    const [shouldStream, setShouldStream] = useState<boolean>(true);
-    const [useSemanticCaptions, setUseSemanticCaptions] = useState<boolean>(false);
-    const [excludeCategory, setExcludeCategory] = useState<string>("");
-    const [useSuggestFollowupQuestions, setUseSuggestFollowupQuestions] = useState<boolean>(false);
-    const [vectorFieldList, setVectorFieldList] = useState<VectorFieldOptions[]>([VectorFieldOptions.Embedding]);
-    const [useOidSecurityFilter, setUseOidSecurityFilter] = useState<boolean>(false);
-    const [useGroupsSecurityFilter, setUseGroupsSecurityFilter] = useState<boolean>(false);
-    const [gpt4vInput, setGPT4VInput] = useState<GPT4VInput>(GPT4VInput.TextAndImages);
-    const [useGPT4V, setUseGPT4V] = useState<boolean>(false);
+    // Define state variables to manage UI state
+    const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);  // Controls the visibility of the config panel
+    const [promptTemplate, setPromptTemplate] = useState<string>("");   // Stores the prompt template
+    const [retrieveCount, setRetrieveCount] = useState<number>(3);      // Number of retrieval results
+    const [retrievalMode, setRetrievalMode] = useState<RetrievalMode>(RetrievalMode.Hybrid);  // Retrieval mode (hybrid by default)
+    const [useSemanticRanker, setUseSemanticRanker] = useState<boolean>(true);  // Whether to use the semantic ranker
+    const [shouldStream, setShouldStream] = useState<boolean>(true);    // Whether to stream responses
+    const [useSemanticCaptions, setUseSemanticCaptions] = useState<boolean>(false); // Use semantic captions instead of full documents
+    const [excludeCategory, setExcludeCategory] = useState<string>(""); // Category to exclude from results
+    const [useSuggestFollowupQuestions, setUseSuggestFollowupQuestions] = useState<boolean>(false); // Suggest follow-up questions
+    const [vectorFieldList, setVectorFieldList] = useState<VectorFieldOptions[]>([VectorFieldOptions.Embedding]); // Vector field options
+    const [useOidSecurityFilter, setUseOidSecurityFilter] = useState<boolean>(false); // OID security filter
+    const [useGroupsSecurityFilter, setUseGroupsSecurityFilter] = useState<boolean>(false); // Groups security filter
+    const [gpt4vInput, setGPT4VInput] = useState<GPT4VInput>(GPT4VInput.TextAndImages); // GPT-4V input type
+    const [useGPT4V, setUseGPT4V] = useState<boolean>(false); // Whether to use GPT-4V
 
-    const lastQuestionRef = useRef<string>("");
-    const chatMessageStreamEnd = useRef<HTMLDivElement | null>(null);
+    const lastQuestionRef = useRef<string>("");  // Ref to store the last question asked
+    const chatMessageStreamEnd = useRef<HTMLDivElement | null>(null);  // Ref to scroll to the latest message
 
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [isStreaming, setIsStreaming] = useState<boolean>(false);
-    const [error, setError] = useState<unknown>();
+    // State for managing the chat and UI behavior
+    const [isLoading, setIsLoading] = useState<boolean>(false); // Loading state when waiting for backend response
+    const [isStreaming, setIsStreaming] = useState<boolean>(false); // Streaming state when receiving response chunks
+    const [error, setError] = useState<unknown>(); // Error state to handle any issues
 
-    const [activeCitation, setActiveCitation] = useState<string>();
+    const [activeCitation, setActiveCitation] = useState<string>(); // Active citation for displaying in the chat
+    const [selectedAnswer, setSelectedAnswer] = useState<number>(0); // Track the selected answer
+    const [answers, setAnswers] = useState<[user: string, response: ChatAppResponse][]>([]); // Store the chat history as pairs of questions and responses
+    const [showGPT4VOptions, setShowGPT4VOptions] = useState<boolean>(false); // Control visibility of GPT-4V options
 
-    const [selectedAnswer, setSelectedAnswer] = useState<number>(0);
-    const [answers, setAnswers] = useState<[user: string, response: ChatAppResponse][]>([]);
-    const [showGPT4VOptions, setShowGPT4VOptions] = useState<boolean>(false);
-
+    // Function to make an API request to the backend with the user's question
     const makeApiRequest = async (question: string) => {
-        lastQuestionRef.current = question;
+        lastQuestionRef.current = question; // Save the question in the ref
 
+        // Clear previous error and loading state
         error && setError(undefined);
         setIsLoading(true);
         setActiveCitation(undefined);
 
         try {
+            // Create the request object to be sent to the backend
             const request: ChatAppRequest = {
                 prompt: question,
-                session_id: "1234" 
+                session_id: "1234"  // Hardcoded session ID; should ideally be dynamic
             };
 
-            const response = await chatApi(request);
+            // Await the response from the backend API
+            const response = await chatApi(request); // Sends the request to the backend
             const contentType = response.headers.get("content-type");
+            
+            // Handle different types of responses based on the content type
             if (!response.body) {
-                throw Error("No response body");
+                throw Error("No response body"); // Handle missing response body
             } else if (contentType?.indexOf('text/html') !== -1 || contentType?.indexOf('text/plain') !== -1) {
+                // If the response is plain text or HTML (unexpected), handle it as an error
                 const bodyText = await response.text();
                 console.error(`Chat Error: ${bodyText}`);
                 setError(bodyText);
             } else {
+                // Parse the JSON response and update the answers array
                 const parsedResponse: ChatAppResponse = await response.json();
-                setAnswers([...answers, [question, parsedResponse]]);
+                setAnswers([...answers, [question, parsedResponse]]); // Append the new answer to the state
             }
-            // if (shouldStream) {
-            //     const parsedResponse: ChatAppResponse = await handleAsyncRequest(question, answers, setAnswers, response.body);
-            //     setAnswers([...answers, [question, parsedResponse]]);
-            // } else {
-            //     const parsedResponse: ChatAppResponseOrError = await response.json();
-            //     if (response.status > 299 || !response.ok) {
-            //         throw Error(parsedResponse.error || "Unknown error");
-            //     }
-            //     setAnswers([...answers, [question, parsedResponse as ChatAppResponse]]);
-            // }
         } catch (e) {
+            // Handle any errors that occurred during the request
             console.error(`Chat Error: ${e}`);
             setError(e);
         } finally {
+            // Finally, set loading to false regardless of the outcome
             setIsLoading(false);
         }
     };
 
+    // Function to clear the chat history and reset state
     const clearChat = () => {
         lastQuestionRef.current = "";
         error && setError(undefined);
@@ -105,12 +105,10 @@ const Chat = () => {
         setIsStreaming(false);
     };
 
+    // Scroll to the end of the chat whenever the loading state changes
     useEffect(() => chatMessageStreamEnd.current?.scrollIntoView({ behavior: "smooth" }), [isLoading]);
-    //useEffect(() => chatMessageStreamEnd.current?.scrollIntoView({ behavior: "auto" }), [streamedAnswers]);
-    // useEffect(() => {
-    //     getConfig();
-    // }, []);
 
+    // Event handlers for UI components
     const onPromptTemplateChange = (_ev?: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
         setPromptTemplate(newValue || "");
     };
@@ -148,18 +146,12 @@ const Chat = () => {
     };
 
     const onExampleClicked = (example: string) => {
-        makeApiRequest(example);
+        makeApiRequest(example); // Trigger an API request when an example is clicked
     };
 
     const onShowCitation = (citation: string, index: number) => {
-        // if (activeCitation === citation && activeAnalysisPanelTab === AnalysisPanelTabs.CitationTab && selectedAnswer === index) {
-        //     setActiveAnalysisPanelTab(undefined);
-        // } else {
-            setActiveCitation(citation);
-        //    setActiveAnalysisPanelTab(AnalysisPanelTabs.CitationTab);
-        //}
-
-        setSelectedAnswer(index);
+        setActiveCitation(citation); // Set the active citation to be displayed
+        setSelectedAnswer(index);    // Mark the corresponding answer as selected
     };
 
     return (

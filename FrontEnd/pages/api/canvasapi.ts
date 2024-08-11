@@ -17,7 +17,7 @@ export async function runCodeApi(body: string, code: string): Promise<string> {
      throw new Error(`Error ${response.status}: ${response.statusText}`);
    }
 
-
+// binary large objects, stores things in binary
    const blob = await response.blob();
    base64Image = await new Promise((resolve, reject) => {
      const reader = new FileReader();

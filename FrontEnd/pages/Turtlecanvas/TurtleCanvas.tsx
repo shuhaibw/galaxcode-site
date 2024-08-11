@@ -9,12 +9,13 @@ const TurtleCanvas = () => {
 
  const runCode = async () => {
    try {
-     const codeString = code.trim();
-     const body = JSON.stringify({ code: codeString });
-     const response = await runCodeApi(body, codeString);
+     const codeString = code.trim(); // 1. Trim any leading/trailing whitespace from the code.
+     const body = JSON.stringify({ code: codeString }); // 2. Create a JSON string containing the code.
+     const response = await runCodeApi(body, codeString); // 3. Pass both the JSON body and the raw code string to the API.
 
 
-     setImageSrc(response);
+     setImageSrc(response); // 4. Set the image source with the response from the API.
+
    } catch (error) {
      console.error('Error running code:', error);
    }
