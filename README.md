@@ -5,10 +5,12 @@
 
 + [Overview](#overview)
   
-+ [Technical Architecture](#technical)
++ [Technical Architecture](#technical) <br>
+  &nbsp;&#9702; [Galaxcode Backend Architecture](#galaxcode-backend) <br>
+  &nbsp;&#9702; [Chatbot's Response Process](#chatbot-response) <br>
    
 + [Directory Structure](#directory) <br> 
-  
+   
     &nbsp;&#9702; [chatbot-back](#chatbot) <br>
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/Backend](#backend-1) <br>
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/Labs](#labs) <br> <br>
@@ -21,8 +23,14 @@
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/utils](#utils) <br>
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/styles](#styles) <br>
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/public](#public-3) <br>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/Dockerfile](#dockerfile-3) <br>
-    
+      
+
++ [Demos](#demos) <br>
+   &nbsp;&#9702; [Chatbot demo](#chatbot-demo) <br> 
+   &nbsp;&#9702; [Drawing Canvas Demo](#canvas-demo) <br> <br>
+
++ [Application Status](#app-status)
+  
 + [Running the Application](#running-app)
 
 <h2 id="overview">Overview</h2>
@@ -30,7 +38,28 @@ Galaxcode transforms coding education into an interstellar adventure for ages 9-
 
 <h2 id="technical">Technical Architecture</h2>
 
-### Chatbot's Response Process <br> 
+Galaxcode leverages React and Next.js for a dynamic front-end, with FastAPI powering the chatbot and drawing canvas. Azure Cosmos DB and Azure OpenAI collaborate to drive the intelligent chatbot, while MongoDB handles secure login and signup processes. Docker Desktop Containers streamline development before deployment to Azure Container Apps. This architecture is optimized for performance and scalability, ensuring a smooth user experience.
+
+<img src="https://github.com/user-attachments/assets/8f1ce220-ba4a-438f-8858-2d9c8d8475f1" alt="diagram" width="300" height="780"/>
+<br>
+
+<h3 id="galaxcode-backend">Galaxcode Backend Architecture</h3> 
+
+The application is hosted within **Microsoft Azure Container Apps**, with the frontend managing interactions through three key API routes:
+
+1. **Drawing Canvas - `/api/canvasapi.ts`**: User drawings are sent here and processed by the Turtle Backend, which runs as a Docker container within Azure Container Apps. The resulting image is then returned to the frontend.
+
+2. **Chatbot - `/api/api`**: User prompts are sent to this route and processed by the Chatbot Backend, also deployed as a Docker container within Azure Container Apps. It retrieves context from Azure Cosmos DB and sends the generated response back to the frontend.
+
+3. **AI Translation - `/api/translate`**: Text for translation is sent to this route, processed by the AI Translator Service (Azure), and the translated text is returned to the frontend.
+
+   
+<img width="500" alt="Screenshot 2024-08-11 at 5 45 42 PM" src="https://github.com/user-attachments/assets/968c43c7-ae2b-4990-bfbf-57db6dda8d88">
+
+
+
+<h3 id="chatbot-response">Chatbot's Response Process </h3> 
+
 The chatbot is connected to an Azure Cosmos DB database through a connection string, allowing it to retrieve information when needed. The response process involves three main steps: Embedding, Vector Search, and LangChain RAG (Retrieval-Augmented Generation). These steps ensure the chatbot provides relevant and useful answers to user queries.
 
 #### 1. **Embedding**
@@ -72,7 +101,26 @@ The LangChain RAG system uses the retrieved information to create a response:
 <h3 id="frontend">Frontend</h3>
 
 
-<h3 id="running-app">Running the Application</h3>
+<h2 id="demos">Demos</h2> 
+
+<h3 id="chatbot-demo">Chatbot Demo</h3> 
+
+
+https://github.com/user-attachments/assets/b40d32e4-5254-4471-87e3-50ac98ccb727
+
+
+<br> <h3 id="canvas-demo">Drawing Canvas Demo</h3> 
+
+
+https://github.com/user-attachments/assets/8b7fa04c-feea-487e-9e95-98cea7e23c4a
+
+<h2 id="app-status"> Application Status </h2> 
+
+This project was initially hosted on Azure Container Apps. During that time, both the chatbot and drawing canvas features were fully operational. However, due to the expiration of my Azure credits, these specific features are temporarily unavailable as they were hosted on Azure.
+
+The rest of the website remains live and accessible at <code>galaxcode.vercel.app </code> I’m exploring alternative hosting solutions to bring these features back online in the near future. 
+
+<h2 id="running-app">Running the Application</h2> 
 
 This is a Next.js project bootstrapped with `create-next-app`.
 
