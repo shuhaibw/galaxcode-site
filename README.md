@@ -4,6 +4,8 @@
 ## Table of Contents
 
 + [Overview](#overview)
+
++ [Application Status](#app-status)
   
 + [Technical Architecture](#technical) <br>
   &nbsp;&#9702; [Galaxcode Backend Architecture](#galaxcode-backend) <br>
@@ -12,29 +14,37 @@
 + [Directory Structure](#directory) <br> 
    
     &nbsp;&#9702; [chatbot-back](#chatbot) <br>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/Backend](#backend-1) <br>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/Labs](#labs) <br> <br>
-    &nbsp;&#9702;[Turtle Backend](#turtle) <br>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/Backend](#backend-2) <br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Backend/](#backend-1) <br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Labs/](#labs) <br> <br>
+    &nbsp;&#9702;[Turtle-Backend](#turtle) <br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[public/](#public-2) <br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[app.py](#app-py) <br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Dockerfile](#the-dockerfile) <br>
     <br> &nbsp;&#9702;[Frontend](#frontend)  <br>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/pages](#pages) <br>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/components](#components) <br>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/models](#models) <br>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/utils](#utils) <br>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/styles](#styles) <br>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[/public](#public-3) <br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[pages/](#pages) <br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[components/](#components) <br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[models/](#models) <br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[utils/](#utils) <br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[styles/](#styles) <br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[public/](#public-3) <br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[pages/api/](#api) <br>
       
 
 + [Demos](#demos) <br>
    &nbsp;&#9702; [Chatbot demo](#chatbot-demo) <br> 
    &nbsp;&#9702; [Drawing Canvas Demo](#canvas-demo) <br> <br>
 
-+ [Application Status](#app-status)
   
 + [Running the Application](#running-app)
 
 <h2 id="overview">Overview</h2>
 Galaxcode transforms coding education into an interstellar adventure for ages 9-16. Powered by Azure AI, including GPT-3.5 and Azure Translator, our platform uses Python Turtle Graphics to let kids command a spaceship, drawing planetary designs while learning fundamental coding concepts. With lessons in 40+ languages and a chatbot offering hints and answers, Galaxcode makes mastering code a journey through the stars.
+
+<h2 id="app-status"> Application Status </h2> 
+
+This project was initially hosted on Azure Container Apps. During that time, both the chatbot and drawing canvas features were fully operational. However, due to the expiration of my Azure credits, these specific features are temporarily unavailable as they were hosted on Azure.
+
+The rest of the website remains live and accessible at <code>galaxcode.vercel.app</code> I’m exploring alternative hosting solutions to bring these features back online in the near future. 
 
 <h2 id="technical">Technical Architecture</h2>
 
@@ -96,10 +106,57 @@ The LangChain RAG system uses the retrieved information to create a response:
 <img width="800" height="450" alt="Screenshot 2024-08-10 at 8 08 25 PM" src="https://github.com/user-attachments/assets/9c0b91d2-9725-4720-bd4d-15bf68907298">
 
 <h2 id="directory">Directory Structure</h2>
-<h3 id="chatbot">Chatbot Backend</h3>
-<h3 id="turtle">Turtle Backend</h3>
-<h3 id="frontend">Frontend</h3>
 
+<h3 id="chatbot">chatbot-back</h3>
+
+<h4 id="backend-1"><code>Backend/</code></h4> 
+The `Backend/` directory contains essential components for the chatbot backend, configured for deployment in a Docker container. <br>
+
+- **<code>Dockerfile</code>**: Prepares the chatbot backend for containerization, allowing it to be deployed in a Docker environment with all necessary dependencies and configurations.
+- **<code>/api_models</code>**: Manages the session ID and incoming user prompts, enabling the AI agent to generate appropriate responses.
+- **<code>cosmic_works/</code>**: Contains the file that defines the functionalities and capabilities of the chatbot, detailing its operations and interactions.
+- **<code>app.py</code>**: Serves as the API entry point for the backend, handling requests and responses for the chatbot API.
+- 
+<h4 id="labs"><code>Labs/</code></h4> 
+The `Labs/` directory contains various components related to experimental and deployment processes. <br>
+
+- **<code>challenge.ipynb</code>**: Contains information about the challenges for the chatbot, which is loaded into the Cosmos DB database. This notebook is used for managing and integrating challenge data.
+- **<code>deploy/</code>**: Houses initial Azure deployment configurations and scripts, facilitating the setup and management of deployments on Azure.
+- **<code>models/</code>**: Includes some initial models that are not related to the current chatbot but may be used for other purposes or future developments.
+
+<h3 id="turtle">Turtle-Backend</h3>
+
+<h4 id="public-2"><code>public/</code></h4> 
+The <code>public/</code> directory contains the images of rockets used in the drawing canvas. These images are utilized to enhance the visual experience, providing engaging and thematic content that complements the Python Turtle graphics functionality.
+
+<h4 id="app-py"><code>app.py</code></h4> 
+The <code>app.py</code> file serves as the backend for the drawing canvas, enabling kids to see the results of their Python Turtle graphics code in real time. It processes and manages the dynamic rendering of graphics, allowing for an interactive and engaging experience as users input their code and view the generated visuals instantly.
+
+<h4 id="the-dockerfile"><code>Dockerfile</code></h4> 
+This <code>Dockerfile</code> is designed to containerize the Turtle-Backend, preparing it for deployment to Azure Container Apps.
+
+<h3 id="Frontend">Frontend</h3>
+
+<h4 id="pages"><code>pages/</code></h4> 
+This directory holds all <code>.tsx</code> files, with each file corresponding to a specific route in the Galaxcode application. Powered by Next.js, these pages utilize server-side rendering (SSR) to deliver dynamic content to users, ensuring fast and efficient page loads.
+
+<h4 id="components"><code>components/</code></h4> 
+Contains all React components used throughout the Galaxcode site. This directory is organized into subfolders based on the functionality of each component, making it easy to manage and reuse components across different pages. For example, it includes components used in the chatbot and other interactive features.
+
+<h4 id="models"><code>models/</code></h4> 
+In this directory, you will find the <code>userSchema</code> file, which defines the schema for user data in the MongoDB database. This schema is critical for managing user authentication and ensuring data consistency throughout the signup/login process.
+
+<h4 id="utils"><code>utils/</code></h4> 
+The <code>utils/</code> directory includes utility files like <code>db.js</code>, which handles the connection to your MongoDB database for the signup and login functionalities. By keeping this logic modular, it allows for better maintainability and separation of concerns within the application.
+
+<h4 id="styles"><code>styles/</code></h4> 
+Contains the global stylesheet, <code>globals.css</code>, which defines the overarching styles for the Galaxcode application. This file ensures consistency in the visual design across all pages and components by centralizing the styling rules.
+
+<h4 id="public-3"><code>public/</code></h4> 
+This directory houses all the images used across the Galaxcode site. These assets are organized here to ensure easy management and access for both the front-end components and any static content.
+
+<h4 id="api"><code>pages/api/</code></h4> 
+Located within the <code>pages/</code> directory, this folder contains all the Next.js API routes necessary for the Galaxcode application. These routes handle server-side logic and data fetching, enabling interactions between the front end and the back end of the application.
 
 <h2 id="demos">Demos</h2> 
 
@@ -114,11 +171,7 @@ https://github.com/user-attachments/assets/b40d32e4-5254-4471-87e3-50ac98ccb727
 
 https://github.com/user-attachments/assets/8b7fa04c-feea-487e-9e95-98cea7e23c4a
 
-<h2 id="app-status"> Application Status </h2> 
 
-This project was initially hosted on Azure Container Apps. During that time, both the chatbot and drawing canvas features were fully operational. However, due to the expiration of my Azure credits, these specific features are temporarily unavailable as they were hosted on Azure.
-
-The rest of the website remains live and accessible at <code>galaxcode.vercel.app </code> I’m exploring alternative hosting solutions to bring these features back online in the near future. 
 
 <h2 id="running-app">Running the Application</h2> 
 
